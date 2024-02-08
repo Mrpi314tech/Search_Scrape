@@ -7,6 +7,7 @@ pattern3 = r'([A-Z])([A-Z])'
 pattern4 = r'(\d)([a-zA-Z])'
 pattern5= r'([A-Z])'
 def scrape(url):
+    surl=url
     url=url.replace('+','plus')
     url="https://www.google.com/search?q="+url.replace(' ','+')
     response = requests.get(url)
@@ -78,7 +79,7 @@ def scrape(url):
             page_text[1] = re.split(r'(?<=[a-z])\s(?=[A-Z])', page_text[1])[0]
             page_text=str(page_text[0])+str(page_text[1])
         if '...' in page_text or 'www.' in page_text or '.com' in page_text or '.org' in page_text or '.gov' in page_text or '.edu' in page_text or '.io' in page_text:
-            return ('Adequate answer not found.')
+            return ('Adequate answer not found for "'+surl+'"')
         return page_text
     else:
         return f"Error: Unable to retrieve content. Status code {response.status_code}"
