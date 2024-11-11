@@ -9,7 +9,7 @@ pattern5= r'([A-Z])'
 def scrape(url):
     surl=url
     url=url.replace('+','plus')
-    url="https://www.google.com/search?q="+url.replace(' ','+')
+    url="https://www.google.com/search?q="+url.replace(' ','+')+'&hl=en&gl=US&num=10&start=0&filter=1&pws=0'
     
     headers = {
         "Accept-Language": "en-US,en;q=0.9",
